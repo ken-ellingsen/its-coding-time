@@ -6,7 +6,9 @@ function Clock() {
   useEffect(() => {
     const timeInterval = window.setInterval(() => {
       setTime(new Date());
+      console.log("In timeInterval");                // Check console to see if interval function runs while clock is hidden
     }, 1000);
+    return () => window.clearInterval(timeInterval); // Unmounts Clock component so that the interval function doesn't run while the clock is hidden
   }, []);
 
   return (
